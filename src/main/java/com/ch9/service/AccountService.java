@@ -50,4 +50,6 @@ public interface AccountService {
      */
     boolean deleteById(Integer id);
 
+//    将钱从outerUSer转到inUser
+    void transfer(String outerUser,String inUser,Double balance);
 }

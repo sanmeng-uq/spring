@@ -4,6 +4,9 @@ import com.ch9.entity.Account;
 import com.ch9.dao.AccountDao;
 import com.ch9.service.AccountService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -13,10 +16,14 @@ import javax.annotation.Resource;
  * @author makejava
  * @since 2022-06-02 00:04:37
  */
+@Transactional
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
     @Resource
     private AccountDao accountDao;
+    @Transactional(propagation = Propagation.REQUIRED,
+    isolation = Isolation.DEFAULT,
+    readOnly = false)
 
     /**
      * 通过ID查询单条数据
@@ -74,5 +81,11 @@ public class AccountServiceImpl implements AccountService {
 
     public void setAccountDao(AccountDao accountDao) {
         this.accountDao = accountDao;
+    }
+
+    public void transfer(String outUser,String inUser,Double balance){
+        accountDao.transfer(outUser,-balance);
+       // int i =1/0;
+        accountDao.transfer(inUser,balance);
     }
 }

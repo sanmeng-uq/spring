@@ -77,5 +77,8 @@ public interface AccountDao {
      */
     int deleteById(Integer id);
 
+    /*转账操作*/
+    int transfer(@Param("username") String username,@Param("balance") Double money);
+
 }
 

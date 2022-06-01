@@ -96,5 +96,16 @@
         delete from account where id = #{id}
     </delete>
 
+<!--实现transfer功能-->
+    <update id="transfer">
+        update account
+        <set>
+            <if test="balance!=null">
+                balance=balance+#{balance}
+            </if>
+        </set>
+        where username = #{username}
+    </update>
+
 </mapper>
 
