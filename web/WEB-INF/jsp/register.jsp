@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: David
-  Date: 2022/6/2
-  Time: 2:09
+  User: TFPC
+  Date: 2022/6/15
+  Time: 10:51
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-<h2>ecs</h2>
+<form action="register" method="POST">
+    <input type="text" name="username"/>
+    <input type="text" name="password">
+    <input type="submit">
+</form>
 </body>
 </html>
